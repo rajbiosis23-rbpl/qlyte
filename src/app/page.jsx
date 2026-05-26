@@ -1,0 +1,392 @@
+import "./homr.css";
+export const metadata = {
+  title:
+    "Electrolyte Reagent Supplier in India | Roche, ERBA, Medica EasyLyte",
+
+  description:
+    "Trusted supplier of electrolyte analyzer reagents in India including Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Sensacore ST200 Aqua and more.",
+
+  keywords: [
+    "electrolyte reagent",
+    "electrolyte reagent supplier india",
+    "roche 9180 electrolyte",
+    "erba ec 90 electrolyte",
+    "medica easylyte electrolyte",
+    "hdc lyte electrolyte",
+    "biosystem diestro electrolyte",
+    "ab lyte electrolyte",
+    "sensacore st200 aqua",
+    "edge lab edgelyte electrolyte",
+    "electrolyte analyzer reagent",
+    "electrolyte consumables",
+    "laboratory electrolyte solution",
+    "electrolyte supplier india",
+    "central biomedicals"
+  ],
+
+  alternates: {
+    canonical:
+      "https://centralbiomedicals.com",
+  },
+
+  openGraph: {
+    title:
+      "Electrolyte Reagent Supplier in India",
+    description:
+      "Premium electrolyte analyzer reagents and solutions for laboratories and hospitals.",
+    url:
+      "https://centralbiomedicals.com",
+    siteName:
+      "Central Biomedicals",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function Home() {
+  return (
+    <>
+      {/* HERO SECTION */}
+      <section className="hero-section">
+        <div className="container-custom hero-grid">
+          <div className="hero-content">
+            <span className="hero-badge">
+              Trusted Electrolyte Supplier in India
+            </span>
+
+           <h1>
+            Premium <span>Electrolyte Analyzer Reagents</span>
+            <br />
+            For Hospitals & Laboratories
+          </h1>
+
+            <p>
+               Central Biomedicals is a trusted supplier of premium electrolyte analyzer reagents in India, delivering high-quality and reliable solutions for hospitals, pathology laboratories, diagnostic centers and healthcare institutions. We provide compatible electrolyte reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, Biosystem Diestro, HDC Lyte, AB Lyte, Sensacore ST200 Aqua and other leading electrolyte analyzers with accurate and stable performance.
+            </p>
+
+            <div className="hero-buttons">
+              <button className="primary-btn">Explore Products</button>
+
+              <button className="secondary-btn">Get Free Quote</button>
+            </div>
+
+            <div className="stats-grid">
+              <div>
+                <h3>10K+</h3>
+                <p>Reagents Delivered</p>
+              </div>
+
+              <div>
+                <h3>50K</h3>
+                <p>Our Clients Family</p>
+              </div>
+
+              <div>
+                <h3>15+</h3>
+                <p>Years Experience</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-image">
+            <img
+              src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e"
+              alt="Premium Laboratory Equipment Supplier in India"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST SECTION */} 
+      <section className="trust-section">
+        <div className="container-custom">
+          <h2>Trusted By Hospitals, Pathology Labs & Diagnostic Centers</h2>
+
+          <div className="trust-grid">
+            <div className="trust-card">Certified Quality Reagents</div>
+
+            <div className="trust-card">Reliable Test Accuracy</div>
+
+            <div className="trust-card">Fast PAN India Delivery</div>
+
+            <div className="trust-card">Technical Expert Support</div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCTS SECTION */}
+      <section className="products-section">
+        <div className="container-custom">
+          <div className="section-heading">
+            <span>Our Products</span>
+            <h2>Compatible Electrolyte Analyzer Reagents</h2>
+          </div>
+
+          <div className="products-grid">
+            <div className="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=1200"
+                alt="Scientific Microscope Laboratory Equipment"
+              />
+
+              <h3>Roche 9180 Electrolyte Reagent</h3>
+              <p>
+               Premium quality electrolyte reagent compatible with Roche 9180 analyzers, designed for highly accurate sodium, potassium and chloride testing.
+              </p>
+            </div>
+
+            <div className="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=1200"
+                alt="Roche 9180 Electrolyte Reagent"
+              />
+
+              <h3>ERBA EC 90 Electrolyte Reagent</h3>
+              <p>
+                High-performance ERBA EC 90 compatible reagent ensuring stable electrolyte analysis and consistent laboratory results.
+              </p>
+            </div>
+
+            <div className="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1200"
+                alt="Medical Diagnostic Laboratory Equipment"
+              />
+
+              <h3>Medica EasyLyte Reagent</h3>
+              <p>Reliable electrolyte reagent for Medica EasyLyte analyzers offering superior testing precision and smooth analyzer performance.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+      {/* CTA SECTION */}
+      <section className="cta-section">
+        <div className="container-custom cta-box">
+          <h2>Looking For Premium Electrolyte Reagents?</h2>
+
+          <p>
+          Get high-quality electrolyte analyzer reagents with trusted quality, competitive pricing, technical support and fast PAN India delivery.
+          </p>
+
+          <button className="primary-btn">Request Free Quote</button>
+        </div>
+      </section>
+
+
+            {/* WHY CHOOSE US */}
+<section className="why-section">
+  <div className="container-custom why-grid">
+
+    <div className="why-image">
+      <img
+        src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
+        alt="Laboratory Equipment"
+      />
+    </div>
+
+    <div className="why-content">
+      <span>Why Choose Us</span>
+
+      <h2>
+       Trusted Electrolyte Reagent Supplier
+For Hospitals & Laboratories
+      </h2>
+
+      <p>
+        Central Biomedicals provides high-quality electrolyte analyzer reagents that deliver stable performance, accurate test results and reliable compatibility with leading electrolyte analyzers. We focus on premium quality, fast delivery and customer satisfaction.
+      </p>
+
+      <div className="why-features">
+
+        <div className="feature-box">
+          ✅ Premium Quality Reagents
+        </div>
+
+        <div className="feature-box">
+          🚚 Fast PAN India Delivery
+        </div>
+
+        <div className="feature-box">
+          🧪 Accurate Test Results
+        </div>
+
+        <div className="feature-box">
+          🎧 Dedicated Technical Support
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+      {/* INDUSTRIES SECTION */}
+<section className="industry-section">
+  <div className="container-custom">
+
+    <div className="section-heading">
+      <span>Industries We Serve</span>
+      <h2>
+       Trusted Across Healthcare & Diagnostic Industries
+      </h2>
+    </div>
+
+    <div className="industry-grid">
+
+      <div className="industry-card">
+       🏥 Hospitals & Clinics
+      </div>
+
+      <div className="industry-card">
+       🧪 Pathology Laboratories
+      </div>
+
+      <div className="industry-card">
+       🔬 Diagnostic Centers
+      </div>
+
+      <div className="industry-card">
+     💊 Pharmaceutical Laboratories
+      </div>
+
+      <div className="industry-card">
+     🎓 Research Institutions
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      {/* TESTIMONIAL SECTION */}
+      <section className="testimonial-section">
+        <div className="container-custom">
+          <div className="section-heading">
+            <span>What Our Clients Say</span>
+            <h2>Trusted By 500+ Happy Clients</h2>
+          </div>
+
+          <div className="testimonial-grid">
+            <div className="testimonial-card">
+              <div className="stars">★★★★★</div>
+
+              <p>
+              Excellent quality electrolyte reagents with fast delivery and consistent performance. Their support team is highly professional.
+              </p>
+
+              <div className="client-info">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Client"
+                />
+
+                <div>
+                  <h4>Dr. Rajesh Sharma</h4>
+                  <span>Senior Pathologist</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="stars">★★★★★</div>
+
+              <p>
+               Reliable electrolyte solutions for our diagnostic laboratory. Product quality and test accuracy are excellent.
+              </p>
+
+              <div className="client-info">
+                <img
+                  src="https://randomuser.me/api/portraits/women/44.jpg"
+                  alt="Client"
+                />
+
+                <div>
+                  <h4>Dr. Anita Verma</h4>
+                  <span>Research Specialist</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="stars">★★★★★</div>
+
+              <p>
+         One of the best electrolyte reagent suppliers in India. Competitive pricing and outstanding service.
+              </p>
+
+              <div className="client-info">
+                <img
+                  src="https://randomuser.me/api/portraits/men/50.jpg"
+                  alt="Client"
+                />
+
+                <div>
+                  <h4>Mr. Amit Patel</h4>
+                  <span>Lab Director</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* FAQ SECTION */}
+<section className="faq-section">
+  <div className="container-custom">
+
+    <div className="section-heading">
+      <span>Frequently Asked Questions</span>
+
+      <h2>
+       Common Questions About
+Electrolyte Reagents
+      </h2>
+    </div>
+
+    <div className="faq-grid">
+
+      <div className="faq-card">
+        <h3>
+          Do you provide compatible electrolyte analyzer reagents?
+        </h3>
+
+        <p>
+         Yes, we provide premium compatible electrolyte reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Biosystem Diestro, Sensacore ST200 Aqua and many more analyzers.
+        </p>
+      </div>
+
+      <div className="faq-card">
+        <h3>
+          Do you provide PAN India delivery?
+        </h3>
+
+        <p>
+       Yes, we provide secure and fast delivery of electrolyte reagents across India.
+        </p>
+      </div>
+
+      <div className="faq-card">
+        <h3>
+          Who can use your electrolyte reagents?
+        </h3>
+
+        <p>
+        Our electrolyte analyzer reagents are widely used in hospitals, pathology labs, diagnostic centers, research laboratories and healthcare institutions.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+    </>
+  );
+}

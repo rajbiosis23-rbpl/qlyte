@@ -1,0 +1,159 @@
+/* ==========================
+FOOTER
+========================== */
+
+.footer {
+  background: #0f172a;
+  color: white;
+  padding-top: 90px;
+  margin-top: 120px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footer-logo {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.footer-text {
+  color: #cbd5e1;
+  line-height: 1.9;
+  max-width: 420px;
+}
+
+.footer-column h3 {
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+
+.footer-column a,
+.footer-column p {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 14px;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.footer-column a:hover {
+  color: white;
+  transform: translateX(4px);
+}
+
+/* SOCIAL */
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.social-icons span {
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: .3s ease;
+  font-size: 20px;
+}
+
+.social-icons span:hover {
+  background: #1677d2;
+  transform: translateY(-5px);
+}
+
+/* NEWSLETTER */
+
+.newsletter-box {
+  margin-top: 70px;
+  background: linear-gradient(
+    135deg,
+    #1677d2,
+    #54a5ff
+  );
+
+  border-radius: 35px;
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newsletter-box h2 {
+  font-size: 36px;
+}
+
+.newsletter-box p {
+  margin-top: 10px;
+  color: rgba(255,255,255,.9);
+}
+
+.newsletter-input {
+  display: flex;
+  gap: 15px;
+}
+
+.newsletter-input input {
+  width: 320px;
+  border: none;
+  outline: none;
+  padding: 18px 22px;
+  border-radius: 999px;
+  font-size: 16px;
+}
+
+.newsletter-input button {
+  border: none;
+  background: white;
+  color: #1677d2;
+  padding: 18px 30px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* BOTTOM */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin-top: 60px;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.footer-bottom p {
+  color: #94a3b8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.footer-top{
+grid-template-columns:1fr;
+}
+
+.newsletter-box{
+flex-direction:column;
+gap:30px;
+text-align:center;
+}
+
+.newsletter-input{
+flex-direction:column;
+width:100%;
+}
+
+.newsletter-input input{
+width:100%;
+}
+}
