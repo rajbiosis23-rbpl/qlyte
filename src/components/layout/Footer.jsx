@@ -4,23 +4,15 @@ import "./footer.css";
 export default function Footer() {
   return (
     <footer className="footer">
-
       <div className="container-custom">
-
         <div className="footer-top">
-
           {/* COMPANY */}
           <div className="footer-column">
-
-            <h2 className="footer-logo">
-              Global Biomedical
-            </h2>
+            <h2 className="footer-logo">Global Biomedical</h2>
 
             <p className="footer-text">
-              Premium laboratory equipment,
-              scientific instruments and
-              healthcare solutions trusted
-              by hospitals, laboratories and
+              Premium laboratory equipment, scientific instruments and
+              healthcare solutions trusted by hospitals, laboratories and
               research centers.
             </p>
 
@@ -30,12 +22,10 @@ export default function Footer() {
               <span>💼</span>
               <span>▶️</span>
             </div>
-
           </div>
 
           {/* QUICK LINKS */}
           <div className="footer-column">
-
             <h3>Quick Links</h3>
 
             <Link href="/">Home</Link>
@@ -43,47 +33,31 @@ export default function Footer() {
             <Link href="/products">Products</Link>
             <Link href="/services">Services</Link>
             <Link href="/contact">Contact</Link>
-
           </div>
 
           {/* SERVICES */}
           <div className="footer-column">
-
             <h3>Our Services</h3>
 
-            <a href="#">
-              Laboratory Equipment
-            </a>
+            <a href="#">Laboratory Equipment</a>
 
-            <a href="#">
-              Installation
-            </a>
+            <a href="#">Installation</a>
 
-            <a href="#">
-              Maintenance
-            </a>
+            <a href="#">Maintenance</a>
 
-            <a href="#">
-              Technical Support
-            </a>
+            <a href="#">Technical Support</a>
 
-            <a href="#">
-              Calibration
-            </a>
-
+            <a href="#">Calibration</a>
           </div>
 
           {/* CONTACT */}
           <div className="footer-column">
-
             <h3>Contact Info</h3>
 
             <p>📍 Jaipur, Rajasthan</p>
             <p>📞 +91 9876543210</p>
             <p>✉️ info@centralbio.com</p>
-
           </div>
-
         </div>
 
         {/* NEWSLETTER */}
@@ -117,12 +91,8 @@ export default function Footer() {
 
         {/* COPYRIGHT */}
         <div className="footer-bottom">
-          <p>
-            © 2026 Global Biomedical.
-            All Rights Reserved.
-          </p>
+          <p>© 2026 Global Biomedical. All Rights Reserved.</p>
         </div>
-
       </div>
     </footer>
   );

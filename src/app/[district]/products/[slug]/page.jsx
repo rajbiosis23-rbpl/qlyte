@@ -61,7 +61,7 @@ export async function generateMetadata({
   params,
 }) {
 
-  const { slug } =
+  const { district, slug } =
     await params;
 
   const product = products.find(
@@ -71,24 +71,26 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title:
-        "Product Not Found",
+      title: "Product Not Found",
     };
   }
 
+  const districtName =
+    district.charAt(0).toUpperCase() +
+    district.slice(1);
+
   return {
     title:
-      `${product.name} | Global Biomedical`,
+      `${product.name} in ${districtName} | Global Biomedical`,
 
     description:
-      `Buy ${product.name} online in India. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
+      `Buy ${product.name} in ${districtName}. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
 
     keywords: [
-      product.name,
-      "Electrolyte Analyzer Reagents",
-      `${product.name} supplier`,
-      `${product.name} India`,
-      "Diagnostic laboratory reagent",
+      `${product.name} in ${districtName}`,
+      `electrolyte reagent in ${districtName}`,
+      `buy ${product.name}`,
+      `${districtName} pathology reagent`,
     ],
   };
 }
@@ -97,7 +99,7 @@ export default async function ProductPage({
   params,
 }) {
 
-  const { slug } =
+  const { district, slug } =
     await params;
 
   const product = products.find(
@@ -108,6 +110,10 @@ export default async function ProductPage({
   if (!product) {
     return notFound();
   }
+
+  const districtName =
+    district.charAt(0).toUpperCase() +
+    district.slice(1);
 
   return (
     <section
@@ -140,8 +146,7 @@ export default async function ProductPage({
                 product.name
               }
               style={{
-                width:
-                  "100%",
+                width: "100%",
                 borderRadius:
                   "30px",
                 boxShadow:
@@ -166,8 +171,10 @@ export default async function ProductPage({
                   "600",
               }}
             >
-              Available
-              PAN India
+              Available in{" "}
+              {
+                districtName
+              }
             </span>
 
             <h1
@@ -202,22 +209,27 @@ export default async function ProductPage({
               {
                 product.description
               }
+
               {" "}
-              Trusted by
+              Available in{" "}
+              <strong>
+                {
+                  districtName
+                }
+              </strong>
+              . Trusted by
               hospitals,
               pathology
               labs and
               healthcare
-              centers
-              across India.
+              centers.
             </p>
 
             <div
               style={{
                 display:
                   "flex",
-                gap:
-                  "15px",
+                gap: "15px",
                 marginTop:
                   "30px",
               }}
@@ -260,7 +272,6 @@ export default async function ProductPage({
               >
                 Contact Us
               </Link>
-
             </div>
 
           </div>
