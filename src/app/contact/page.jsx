@@ -1,52 +1,84 @@
 import "./contact.css";
 
-export const metadata = {
-  title: "Contact Central Biomedicals | Electrolyte Reagent Supplier In India",
+export async function generateMetadata({
+  params,
+}) {
+  const district =
+    params?.district || "";
 
-  description:
-    "Contact Central Biomedicals for premium electrolyte analyzer reagents including Roche 9180, ERBA EC 90, Medica EasyLyte, Sensacore, HDC Lyte and more across India.",
+  const location =
+    district
+      ? district
+          .replace(/-/g, " ")
+      : "India";
 
-  keywords: [
-    "contact electrolyte reagent supplier",
-    "electrolyte reagent supplier india",
-    "electrolyte analyzer reagent supplier",
-    "roche 9180 electrolyte reagent",
-    "erba ec 90 reagent supplier",
-    "medica easylyte reagent",
-    "sensacore electrolyte reagent",
-    "hdc lyte electrolyte",
-    "pathology laboratory reagent supplier",
-    "hospital electrolyte reagent supplier",
-    "contact central biomedicals",
-  ],
+  const url = district
+    ? `https://qlyte.com/${district}/contact`
+    : `https://qlyte.com/contact`;
 
-  alternates: {
-    canonical: "https://centralbiomedicals.com/contact",
-  },
+  return {
+    title: `Electrolyte Reagent Supplier Contact in ${location} | Qlyte`,
 
-  openGraph: {
-    title: "Contact Central Biomedicals",
-    description:
-      "Get in touch for premium electrolyte analyzer reagents trusted by hospitals, pathology laboratories and diagnostic centers across India.",
+    description: `Contact trusted electrolyte reagent supplier in ${location}. Get premium Roche 9180, ERBA EC 90, Medica EasyLyte and compatible electrolyte analyzer reagents.`,
 
-    url: "https://centralbiomedicals.com/contact",
-    siteName: "Central Biomedicals",
-    type: "website",
-  },
+    keywords: [
+      `electrolyte supplier in ${location}`,
+      `electrolyte reagent in ${location}`,
+      `electrolyte analyzer reagent ${location}`,
+      `contact electrolyte supplier ${location}`,
+      `Roche reagent supplier ${location}`,
+      `ERBA EC 90 reagent ${location}`,
+      `Medica EasyLyte ${location}`,
+    ],
 
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+    alternates: {
+      canonical: url,
+    },
+
+    openGraph: {
+      title: `Electrolyte Supplier in ${location}`,
+      description: `Trusted electrolyte reagent supplier in ${location}.`,
+      url,
+      siteName: "Qlyte",
+      locale: "en_IN",
+      type: "website",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function Contact({
   districtData,
 }) {
 
-  const districtName =
-    districtData?.district ||
-    "India";
+const districtName =
+  districtData?.district ||
+  "India";
+
+const districtSlug =
+  districtData?.slug || "";
+
+const formattedDistrict =
+  districtName
+    .split("-")
+    .map(
+      (word) =>
+        word.charAt(0)
+          .toUpperCase() +
+        word.slice(1)
+    )
+    .join(" ");
+
+const officeAddress =
+  districtSlug
+    ? `${formattedDistrict}, Rajasthan, India`
+    : "Jaipur, Rajasthan, India";
+
+
   return (
     <>
       {/* HERO */}
@@ -85,7 +117,7 @@ export default function Contact({
                 📍
                 <div>
                   <h4>Office Address</h4>
-                  <p>Jaipur, Rajasthan, India</p>
+                  <p>{officeAddress}</p>
                 </div>
               </div>
 
@@ -101,7 +133,7 @@ export default function Contact({
                 ✉️
                 <div>
                   <h4>Email Us</h4>
-                  <p>info@centralbiomedicals.com</p>
+                  <p>info@qlyte.com</p>
                 </div>
               </div>
             </div>
@@ -149,7 +181,7 @@ export default function Contact({
               }}
             >
               <iframe
-                src={`https://maps.google.com/maps?q=${districtName}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                src={`https://maps.google.com/maps?q=${officeAddress}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
 
                 width="100%"
                 height="500"

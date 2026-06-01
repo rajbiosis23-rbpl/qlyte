@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="footer-column">
 
             <h2 className="footer-logo">
-              Global Biomedical
+              Qlyte
             </h2>
 
             <p className="footer-text">
@@ -160,7 +160,7 @@ export default function Footer() {
         <div className="footer-bottom">
 
           <p>
-            © 2026 Global Biomedical.
+            © 2026 Qlyte.
             All Rights Reserved.
           </p>
 

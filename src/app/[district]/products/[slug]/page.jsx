@@ -41,7 +41,7 @@ export async function generateMetadata({
     district.slice(1);
 
   return {
-    title: `${product.title} in ${districtName} | Global Biomedical`,
+    title: `${product.title} in ${districtName} | Qlyte`,
 
     description: `Buy ${product.title} in ${districtName}. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
 

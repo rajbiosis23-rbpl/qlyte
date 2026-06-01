@@ -59,7 +59,7 @@
 
 //   return {
 //     title:
-//       `Electrolyte Analyzer Reagents in ${districtName} | Global Biomedical`,
+//       `Electrolyte Analyzer Reagents in ${districtName} | Qlyte`,
 
 //     description:
 //       `Buy premium electrolyte analyzer reagents in ${districtName}. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,

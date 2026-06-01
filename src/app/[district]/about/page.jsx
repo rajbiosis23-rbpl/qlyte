@@ -44,7 +44,7 @@ export async function generateMetadata({
     return {
 
         title:
-            `Electrolyte Analyzer Reagents in ${districtData.district} | Global Biomedical`,
+            `Electrolyte Analyzer Reagents in ${districtData.district} | Qlyte`,
 
         description:
             `Buy premium electrolyte analyzer reagents in ${districtData.district}, ${districtData.state}. Trusted supplier for hospitals and pathology labs.`,

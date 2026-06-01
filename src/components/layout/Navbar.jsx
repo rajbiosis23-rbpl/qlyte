@@ -7,24 +7,20 @@ import { useParams } from "next/navigation";
 const navLinks = [
   {
     name: "Home",
-    path: "",
+    path: "/",
   },
-
   {
     name: "About",
     path: "/about",
   },
-
   {
     name: "Products",
     path: "/products",
   },
-
   {
     name: "Services",
     path: "/services",
   },
-
   {
     name: "Contact",
     path: "/contact",
@@ -46,7 +42,7 @@ export default function Navbar() {
       <nav className="container-custom flex items-center justify-between py-5">
 
         {/* <h2 className="text-2xl font-bold text-blue-700">
-          Global Biomedical
+          Qlyte
         </h2> */}
         <img
           src="/qlyte.png"
@@ -54,34 +50,29 @@ export default function Navbar() {
           className="logo"
         />
 
-        <div className="hidden md:flex gap-8">
+     <div className="hidden md:flex gap-8">
 
-          {navLinks.map(
-            (link) => {
+  {navLinks.map((link) => {
 
-              const href =
-                district
-                  ? `/${district}${link.path}`
-                  : link.path || "/";
+    const href =
+      district
+        ? link.path === "/"
+          ? `/${district}`
+          : `/${district}${link.path}`
+        : link.path;
 
-              return (
+    return (
+      <Link
+        key={link.name}
+        href={href}
+        className="font-medium hover:text-blue-600 transition"
+      >
+        {link.name}
+      </Link>
+    );
+  })}
 
-                <Link
-                  key={link.name}
-
-                  href={href}
-
-                  className="font-medium hover:text-blue-600 transition"
-                >
-
-                  {link.name}
-
-                </Link>
-              );
-            }
-          )}
-
-        </div>
+</div>
 
         <motion.button
           whileHover={{

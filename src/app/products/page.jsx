@@ -5,54 +5,32 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
-export default function Products({
-  districtData,
-}) {
+export default function Products({ districtData }) {
   const [products, setProducts] = useState([]);
-  const district =
-    districtData?.slug;
-  const location =
-    districtData?.district;
+  const district = districtData?.slug;
+  const location = districtData?.district;
   useEffect(() => {
-
     const fetchProducts = async () => {
-
       try {
-
         const snap = await getDoc(
-          doc(
-            db,
-            "websites",
-            "qlyte",
-            "pages",
-            "products"
-          )
+          doc(db, "websites", "qlyte", "pages", "products"),
         );
 
         if (snap.exists()) {
+          const allProducts = snap.data().products || [];
 
-          const allProducts =
-            snap.data().products || [];
-
-          const publishedProducts =
-            allProducts.filter(
-              (item) => item.isPublished
-            );
+          const publishedProducts = allProducts.filter(
+            (item) => item.isPublished,
+          );
 
           setProducts(publishedProducts);
-
         }
-
       } catch (error) {
-
         console.log(error);
-
       }
-
     };
 
     fetchProducts();
-
   }, []);
   return (
     <>
@@ -74,15 +52,19 @@ export default function Products({
           <div className="products-grid-page">
             {products.map((item) => (
               <div className="product-card-page" key={item.id}>
-                <img src={item.image} alt={`${item.title} Supplier in ${districtData?.district || "{location}"
-                  }`} />
+                <img
+                  src={item.image}
+                  alt={`${item.title} Supplier in ${
+                    districtData?.district || "{location}"
+                  }`}
+                />
 
                 <div className="card-content">
-                  <h3>Product: {item.title}</h3>
-                  <h3> Brand: {item.brand}</h3>
-                  <p>
-                    {item.desc || item.short}
-                  </p>
+                  <h3>{item.title}</h3>
+                  <h4>
+                    Brand: <span>{item.brand}</span>
+                  </h4>
+                  <p>{item.desc || item.short}</p>
                   {/* <Link href={`/products/${item.slug}`} className="more-btn"> */}
                   <Link
                     href={
@@ -90,10 +72,9 @@ export default function Products({
                         ? `/${district}/products/${item.slug}`
                         : `/products/${item.slug}`
                     }
-
                     className="more-btn"
                   >
-                    More Info
+                    View Details
                   </Link>
                 </div>
               </div>
