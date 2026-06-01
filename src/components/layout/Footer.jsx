@@ -20,6 +20,19 @@ export default function Footer() {
       : path;
   };
 
+  const formattedDistrict =
+  district
+    ? district
+        .split("-")
+        .map(
+          (word) =>
+            word.charAt(0)
+              .toUpperCase() +
+            word.slice(1)
+        )
+        .join(" ")
+    : "Jaipur"; 
+
   return (
 
     <footer className="footer">
@@ -138,17 +151,17 @@ export default function Footer() {
               Contact Info
             </h3>
 
-            <p>
-              📍 Jaipur,
-              Rajasthan
-            </p>
+           <p>
+      📍 {formattedDistrict},
+            Rajasthan
+          </p>
 
             <p>
               📞 +91 9876543210
             </p>
 
             <p>
-              ✉️ info@centralbio.com
+              ✉️ info@qlyte.com
             </p>
 
           </div>
