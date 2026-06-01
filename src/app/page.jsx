@@ -2,18 +2,17 @@ import "./homr.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Link from "next/link";
+import Homeimg from "./public/Qas.png";
+
+
+
 export async function generateMetadata({ params }) {
   const district = params?.district;
-
   const location = district || "India";
-
   const url = district ? `https://qlyte.com/${district}` : "https://qlyte.com";
-
   return {
     title: `Electrolyte Reagent Supplier in ${location} | Roche, ERBA, Medica EasyLyte | Qlyte`,
-
     description: `Trusted supplier of electrolyte analyzer reagents in ${location}. Compatible with Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Sensacore ST200 Aqua and more.`,
-
     keywords: [
       `electrolyte in ${location}`,
       `electrolyte supplier in ${location}`,
@@ -28,11 +27,9 @@ export async function generateMetadata({ params }) {
       "Pathology lab reagent",
       "Hospital laboratory supplier",
     ],
-
     alternates: {
       canonical: url,
     },
-
     openGraph: {
       title: `Electrolyte Reagent Supplier in ${location}`,
       description: `Premium electrolyte analyzer reagents for hospitals and pathology labs in ${location}.`,
@@ -41,7 +38,6 @@ export async function generateMetadata({ params }) {
       locale: "en_IN",
       type: "website",
     },
-
     robots: {
       index: true,
       follow: true,
@@ -58,24 +54,18 @@ export async function generateMetadata({ params }) {
 export default async function Home({ districtData }) {
   const docRef = doc(db, "websites", "qlyte", "pages", "home");
   const snap = await getDoc(docRef);
-
   const savedData = snap.exists() ? snap.data() : {};
   const location = districtData?.district || "India";
 
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-
     name: `Qlyte ${location}`,
-
     description: `Electrolyte reagent supplier in ${location}`,
-
     areaServed: location,
-
     url: districtData?.slug
       ? `https://qlyte.com/${districtData.slug}`
       : "https://qlyte.com",
-
     medicalSpecialty: "Pathology",
 
     hasOfferCatalog: {
@@ -245,7 +235,7 @@ export default async function Home({ districtData }) {
         <div className="container-custom why-grid">
           <div className="why-image">
             <img
-              src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
+              src="Homeimg"
               alt="Laboratory Equipment"
             />
           </div>
