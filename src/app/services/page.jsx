@@ -1,4 +1,6 @@
 import "./services.css";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 export const metadata = {
   title: "Electrolyte Reagent Supplier Services in India | Central Biomedicals",
 
@@ -41,45 +43,30 @@ export const metadata = {
   },
 };
 
-const services = [
-  {
-    title: "Electrolyte Reagent Supply",
-    icon: "🧪",
-    desc: "Premium quality electrolyte analyzer reagents compatible with leading analyzers for hospitals and laboratories.",
-  },
+export default async function Services({
+  districtData,
+}) {
 
-  {
-    title: "Roche 9180 Reagents",
-    icon: "⚡",
-    desc: "High-quality compatible electrolyte reagents for Roche 9180 analyzers with stable testing performance.",
-  },
+  const districtName =
+    districtData?.district ||
+    "India";
+  const snap = await getDoc(
+    doc(db, "websites", "qlyte", "pages", "services")
+  );
 
-  {
-    title: "ERBA EC 90 Solutions",
-    icon: "🔬",
-    desc: "Reliable ERBA EC 90 compatible electrolyte reagents designed for accurate sodium, potassium and chloride testing.",
-  },
+  const firebaseServices = snap.exists()
+    ? snap.data().services || []
+    : [];
 
-  {
-    title: "Medica EasyLyte Reagents",
-    icon: "🏥",
-    desc: "Premium quality Medica EasyLyte compatible reagents trusted by diagnostic centers and hospitals.",
-  },
+  const icons = [
+    "🧪",
+    "⚡",
+    "🔬",
+    "🏥",
+    "🚚",
+    "🎧",
+  ];
 
-  {
-    title: "PAN India Supply",
-    icon: "🚚",
-    desc: "Fast and secure electrolyte reagent delivery across India with reliable logistics support.",
-  },
-
-  {
-    title: "Technical Assistance",
-    icon: "🎧",
-    desc: "Dedicated expert support for product guidance, reagent compatibility and customer assistance.",
-  },
-];
-
-export default function Services() {
   return (
     <>
       {/* HERO */}
@@ -88,7 +75,7 @@ export default function Services() {
           <span className="service-tag">Our Services</span>
 
           <h1>
-            Premium Electrolyte Analyzer Reagents In India For Hospitals &
+            Premium Electrolyte Analyzer Reagents In {districtName} For Hospitals &
             Laboratories
           </h1>
 
@@ -96,7 +83,7 @@ export default function Services() {
             We provide premium electrolyte analyzer reagents compatible with
             Roche 9180, ERBA EC 90, Medica EasyLyte, Sensacore, HDC Lyte and
             more for hospitals, pathology laboratories, diagnostic centers and
-            healthcare institutions across India.
+            healthcare institutions across {districtName}.
           </p>
         </div>
       </section>
@@ -110,13 +97,23 @@ export default function Services() {
           </div>
 
           <div className="services-grid">
-            {services.map((item, index) => (
+            {firebaseServices.slice(0, 6).map((item, index) => (
               <div className="service-card" key={index}>
-                <div className="service-icon">{item.icon}</div>
+                <div className="service-icon">
+                  {icons[index] || "🧪"}
+                </div>
 
-                <h3>{item.title}</h3>
+                <h3>
+                  {item.title
+                    ?.replaceAll("{city}", districtName)
+                    ?.replaceAll("India", districtName)}
+                </h3>
 
-                <p>{item.desc}</p>
+                <p>
+                  {item.desc
+                    ?.replaceAll("{city}", districtName)
+                    ?.replaceAll("India", districtName)}
+                </p>
               </div>
             ))}
           </div>
@@ -149,7 +146,7 @@ export default function Services() {
             <div className="process-card">
               <h3>03</h3>
               <h4>Fast Delivery</h4>
-              <p>Secure and quick reagent delivery across India.</p>
+              <p>Secure and quick reagent delivery across {districtName}.</p>
             </div>
 
             <div className="process-card">
@@ -167,7 +164,7 @@ export default function Services() {
           <div className="why-service-image">
             <img
               src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
-              alt="Premium Electrolyte Reagent Supplier In India"
+              alt="Premium Electrolyte Reagent Supplier In {districtName}"
             />
           </div>
 
@@ -184,7 +181,7 @@ export default function Services() {
 
             <div className="service-features">
               <div>🧪 Premium Quality Reagents</div>
-              <div>🚚 Fast PAN India Delivery</div>
+              <div>🚚 Fast PAN {districtName} Delivery</div>
               <div>🎧 Dedicated Support</div>
               <div>⚡ High Test Accuracy</div>
             </div>
@@ -194,11 +191,11 @@ export default function Services() {
 
       <section className="seo-services">
         <div className="container-custom">
-          <h2>Trusted Electrolyte Reagent Supplier In India</h2>
+          <h2>Trusted Electrolyte Reagent Supplier In {districtName}</h2>
 
           <p>
             Central Biomedicals provides trusted electrolyte analyzer reagents
-            in India including Roche 9180, ERBA EC 90, Medica EasyLyte,
+            in {districtName} including Roche 9180, ERBA EC 90, Medica EasyLyte,
             Sensacore, HDC Lyte and Biosystem Diestro compatible solutions. Our
             premium quality electrolyte reagents are trusted by hospitals,
             diagnostic laboratories, pathology centers and healthcare

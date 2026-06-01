@@ -1,93 +1,38 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import GetQuoteForm from "@/components/GetQuoteForm";
 
-const products = [
-  {
-    slug: "roche-9180-electrolyte",
-    name: "Roche 9180 Electrolyte Reagent",
-    image:
-      "/images/products/roche-9180.webp",
-    description:
-      "Premium quality electrolyte analyzer reagent compatible with Roche 9180 systems.",
-  },
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
 
-  {
-    slug: "erba-ec-90-electrolyte",
-    name: "ERBA EC 90 Electrolyte Reagent",
-    image:
-      "/images/products/erba-ec90.webp",
-    description:
-      "Reliable ERBA EC 90 compatible electrolyte reagent for accurate diagnostic testing.",
-  },
+  const snap = await getDoc(
+    doc(db, "websites", "qlyte", "pages", "products")
+  );
 
-  {
-    slug: "medica-easylyte-electrolyte",
-    name: "Medica EasyLyte Reagent",
-    image:
-      "/images/products/medica-easylyte.webp",
-    description:
-      "High-quality Medica EasyLyte compatible electrolyte reagent.",
-  },
-
-  {
-    slug: "hdc-lyte-electrolyte",
-    name: "HDC Lyte Electrolyte Reagent",
-    image:
-      "/images/products/hdc-lyte.webp",
-    description:
-      "Premium electrolyte solution for HDC Lyte analyzers.",
-  },
-
-  {
-    slug: "sensacore-st200-aqua",
-    name: "Sensacore ST200 Aqua Reagent",
-    image:
-      "/images/products/sensacore.webp",
-    description:
-      "Premium quality reagent for Sensacore analyzers.",
-  },
-
-  {
-    slug: "biosystem-diestro-electrolyte",
-    name: "Biosystem Diestro Electrolyte Reagent",
-    image:
-      "/images/products/biosystem.webp",
-    description:
-      "Advanced electrolyte solution for Biosystem analyzers.",
-  },
-];
-
-export async function generateMetadata({
-  params,
-}) {
-
-  const { slug } =
-    await params;
+  const products = snap.exists()
+    ? snap.data().products || []
+    : [];
 
   const product = products.find(
-    (item) =>
-      item.slug === slug
+    (item) => item.slug === slug
   );
 
   if (!product) {
     return {
-      title:
-        "Product Not Found",
+      title: "Product Not Found",
     };
   }
 
   return {
-    title:
-      `${product.name} | Global Biomedical`,
-
-    description:
-      `Buy ${product.name} online in India. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
-
+    title: `${product.title} | Global Biomedical`,
+    description: `Buy ${product.title} online in India. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
     keywords: [
-      product.name,
+      product.title,
       "Electrolyte Analyzer Reagents",
-      `${product.name} supplier`,
-      `${product.name} India`,
+      `${product.title} supplier`,
+      `${product.title} India`,
       "Diagnostic laboratory reagent",
     ],
   };
@@ -96,176 +41,134 @@ export async function generateMetadata({
 export default async function ProductPage({
   params,
 }) {
+  const { district, slug } = await params;
 
-  const { slug } =
-    await params;
+  const snap = await getDoc(
+    doc(db, "websites", "qlyte", "pages", "products")
+  );
+
+  const products = snap.exists()
+    ? snap.data().products || []
+    : [];
 
   const product = products.find(
-    (item) =>
-      item.slug === slug
+    (item) => item.slug === slug
   );
 
   if (!product) {
-    return notFound();
+    notFound();
   }
 
   return (
     <section
       style={{
-        padding:
-          "80px 0",
-        background:
-          "#f8fbff",
+        padding: "80px 0",
+        background: "#f8fbff",
       }}
     >
       <div className="container-custom">
-
         <div
           style={{
             display: "grid",
-            gridTemplateColumns:
-              "1fr 1fr",
+            gridTemplateColumns: "1fr 1fr",
             gap: "60px",
-            alignItems:
-              "center",
+            alignItems: "center",
           }}
         >
-
+          {/* Product Image */}
           <div>
             <img
               src={
-                product.image
+                typeof product.image === "string" &&
+                  product.image.startsWith("http")
+                  ? product.image
+                  : "/images/products/default.webp"
               }
-              alt={
-                product.name
-              }
+              alt={product.title}
               style={{
-                width:
-                  "100%",
-                borderRadius:
-                  "30px",
+                width: "100%",
+                borderRadius: "30px",
                 boxShadow:
                   "0 20px 60px rgba(0,0,0,.12)",
               }}
             />
           </div>
 
+          {/* Product Details */}
           <div>
-
             <span
               style={{
-                background:
-                  "#eaf4ff",
-                color:
-                  "#0f6cbd",
-                padding:
-                  "12px 20px",
-                borderRadius:
-                  "999px",
-                fontWeight:
-                  "600",
+                background: "#eaf4ff",
+                color: "#0f6cbd",
+                padding: "12px 20px",
+                borderRadius: "999px",
+                fontWeight: "600",
+                display: "inline-block",
               }}
             >
-              Available
-              PAN India
+              Available PAN India
             </span>
 
             <h1
               style={{
-                fontSize:
-                  "55px",
-                marginTop:
-                  "24px",
-                lineHeight:
-                  "1.1",
-                fontWeight:
-                  "700",
+                fontSize: "55px",
+                marginTop: "24px",
+                lineHeight: "1.1",
+                fontWeight: "700",
               }}
             >
-              {
-                product.name
-              }
+              {product.title}
             </h1>
 
             <p
               style={{
-                marginTop:
-                  "24px",
-                lineHeight:
-                  "2",
-                color:
-                  "#6b7280",
-                fontSize:
-                  "18px",
+                marginTop: "24px",
+                lineHeight: "2",
+                color: "#6b7280",
+                fontSize: "18px",
               }}
             >
-              {
-                product.description
-              }
-              {" "}
-              Trusted by
-              hospitals,
-              pathology
-              labs and
-              healthcare
-              centers
+              {product.desc} Trusted by hospitals,
+              pathology labs and healthcare centers
               across India.
             </p>
 
             <div
               style={{
-                display:
-                  "flex",
-                gap:
-                  "15px",
-                marginTop:
-                  "30px",
+                display: "flex",
+                gap: "15px",
+                marginTop: "30px",
+                alignItems: "flex-start",
               }}
             >
-              <button
-                style={{
-                  background:
-                    "#1565d8",
-                  color:
-                    "#fff",
-                  border:
-                    "none",
-                  padding:
-                    "18px 34px",
-                  borderRadius:
-                    "999px",
-                  cursor:
-                    "pointer",
-                  fontWeight:
-                    "600",
-                }}
-              >
-                Get Quote
-              </button>
+
 
               <Link
-                href="/contact"
+                href={
+                  district
+                    ? `/${district}/contact`
+                    : "/contact"
+                }
                 style={{
-                  border:
-                    "2px solid #1565d8",
-                  color:
-                    "#1565d8",
-                  padding:
-                    "16px 34px",
-                  borderRadius:
-                    "999px",
-                  fontWeight:
-                    "600",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "2px solid #1565d8",
+                  color: "#1565d8",
+                  padding: "16px 34px",
+                  borderRadius: "999px",
+                  fontWeight: "600",
+                  textDecoration: "none",
+                  alignSelf: "flex-start",
                 }}
               >
                 Contact Us
               </Link>
-
+              <GetQuoteForm />
             </div>
 
           </div>
         </div>
-
       </div>
     </section>
   );

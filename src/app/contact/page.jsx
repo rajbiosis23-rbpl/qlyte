@@ -40,7 +40,13 @@ export const metadata = {
   },
 };
 
-export default function Contact() {
+export default function Contact({
+  districtData,
+}) {
+
+  const districtName =
+    districtData?.district ||
+    "India";
   return (
     <>
       {/* HERO */}
@@ -48,13 +54,13 @@ export default function Contact() {
         <div className="container-custom">
           <span className="contact-tag">Contact Us</span>
 
-          <h1> Contact Trusted Electrolyte Reagent Supplier In India</h1>
+          <h1>Contact Trusted Electrolyte Reagent Supplier In {districtName}</h1>
 
           <p>
             Need premium electrolyte analyzer reagents for Roche 9180, ERBA EC
             90, Medica EasyLyte, HDC Lyte, Sensacore or other analyzers? Contact
             our expert team today for reliable reagent solutions, technical
-            support and fast PAN India delivery.
+            support and fast PAN {districtName} delivery.
           </p>
         </div>
       </section>
@@ -118,11 +124,11 @@ export default function Contact() {
 
       <section className="seo-contact">
         <div className="container-custom">
-          <h2> Trusted Electrolyte Reagent Supplier In India</h2>
+          <h2>Trusted Electrolyte Reagent Supplier In {districtName}</h2>
 
           <p>
             Central Biomedicals is a trusted electrolyte analyzer reagent
-            supplier in India providing premium compatible reagents for Roche
+            supplier in {districtName} providing premium compatible reagents for Roche
             9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Sensacore ST200 Aqua
             and Biosystem Diestro analyzers. Our products are trusted by
             hospitals, pathology labs, diagnostic centers and healthcare
@@ -135,18 +141,31 @@ export default function Contact() {
       <section className="map-section">
         <div className="container-custom">
           <div className="map-wrapper">
-            <iframe
-              src="https://maps.google.com/maps?q=Amrapali%20Vaishali%20Nagar%20Jaipur%20302021&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="500"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            <div
+              style={{
+                border: "4px solid #2563eb",
+                borderRadius: "20px",
+                overflow: "hidden",
+              }}
+            >
+              <iframe
+                src={`https://maps.google.com/maps?q=${districtName}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+
+                width="100%"
+                height="500"
+
+                style={{
+                  border: 0,
+                }}
+
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
-      </section>
+      </section >
     </>
   );
 }

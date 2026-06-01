@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export const metadata = {
   title:
-    "About Central Biomedicals | Trusted Electrolyte Reagent Supplier in India",
+    "About Central Biomedicals | Trusted Electrolyte Reagent Supplier in {location}",
 
   description:
-    "Learn about Central Biomedicals, a trusted electrolyte reagent supplier in India offering premium electrolyte analyzer reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, Sensacore, HDC Lyte and more.",
+    "Learn about Central Biomedicals, a trusted electrolyte reagent supplier in {location} offering premium electrolyte analyzer reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, Sensacore, HDC Lyte and more.",
 
   keywords: [
     "about central biomedicals",
@@ -47,7 +47,11 @@ export const metadata = {
   },
 };
 
-export default function About() {
+export default function AboutPage({
+  districtData,
+}) {
+  const location =
+    districtData?.district || "India";
   return (
     <>
       {/* HERO */}
@@ -60,12 +64,12 @@ export default function About() {
 
       <section className="seo-about">
         <div className="container-custom">
-          <span className="page-tag">About Central Biomedicals</span>
-          <h2>Trusted Electrolyte Reagent Supplier In India</h2>
+          <span className="page-tag">About Central Biomedicals In {location}</span>
+          <h2>Trusted Electrolyte Reagent Supplier In {location}</h2>
 
           <p>
             Central Biomedicals is a trusted supplier of premium electrolyte
-            analyzer reagents in India, delivering reliable and high-quality
+            analyzer reagents in {location}, delivering reliable and high-quality
             solutions for hospitals, pathology laboratories, diagnostic centers
             and healthcare institutions. We provide compatible electrolyte
             reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte,
@@ -82,14 +86,14 @@ export default function About() {
           <div className="company-image">
             <img
               src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
-              alt="Trusted Electrolyte Reagent Supplier in India"
+              alt="Trusted Electrolyte Reagent Supplier in {location}"
             />
           </div>
 
           <div className="company-content">
             <span>Who We Are</span>
 
-            <h2>Leading Supplier Of Electrolyte Analyzer Reagents In India</h2>
+            <h2>Leading Supplier Of Electrolyte Analyzer Reagents In {location}</h2>
 
             <p>
               Central Biomedicals is a trusted supplier of premium electrolyte
@@ -150,7 +154,7 @@ export default function About() {
             <h2>Our Vision</h2>
 
             <p>
-              To become India's most trusted electrolyte reagent supplier by
+              To become {location}'s most trusted electrolyte reagent supplier by
               delivering innovation, quality products and unmatched customer
               service.
             </p>
@@ -171,7 +175,7 @@ export default function About() {
 
             <div className="why-card">✅ Reliable Test Accuracy</div>
 
-            <div className="why-card">🚚 Fast PAN India Delivery</div>
+            <div className="why-card">🚚 Fast PAN {location} Delivery</div>
 
             <div className="why-card">🎧 Technical Support</div>
 
@@ -221,10 +225,16 @@ export default function About() {
 
           <p>
             Contact our experts for high-quality electrolyte analyzer reagents
-            with reliable quality and fast PAN India delivery.
+            with reliable quality and fast PAN {location} delivery.
           </p>
 
-          <Link href="/contact">
+          <Link
+            href={
+              districtData?.slug
+                ? `/${districtData.slug}/contact`
+                : "/contact"
+            }
+          >
             <button>Contact Us</button>
           </Link>
         </div>

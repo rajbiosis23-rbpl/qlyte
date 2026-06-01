@@ -1,68 +1,29 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-
-const products = [
-  {
-    slug: "roche-9180-electrolyte",
-    name: "Roche 9180 Electrolyte Reagent",
-    image:
-      "/images/products/roche-9180.webp",
-    description:
-      "Premium quality electrolyte analyzer reagent compatible with Roche 9180 systems.",
-  },
-
-  {
-    slug: "erba-ec-90-electrolyte",
-    name: "ERBA EC 90 Electrolyte Reagent",
-    image:
-      "/images/products/erba-ec90.webp",
-    description:
-      "Reliable ERBA EC 90 compatible electrolyte reagent for accurate diagnostic testing.",
-  },
-
-  {
-    slug: "medica-easylyte-electrolyte",
-    name: "Medica EasyLyte Reagent",
-    image:
-      "/images/products/medica-easylyte.webp",
-    description:
-      "High-quality Medica EasyLyte compatible electrolyte reagent.",
-  },
-
-  {
-    slug: "hdc-lyte-electrolyte",
-    name: "HDC Lyte Electrolyte Reagent",
-    image:
-      "/images/products/hdc-lyte.webp",
-    description:
-      "Premium electrolyte solution for HDC Lyte analyzers.",
-  },
-
-  {
-    slug: "sensacore-st200-aqua",
-    name: "Sensacore ST200 Aqua Reagent",
-    image:
-      "/images/products/sensacore.webp",
-    description:
-      "Premium quality reagent for Sensacore analyzers.",
-  },
-
-  {
-    slug: "biosystem-diestro-electrolyte",
-    name: "Biosystem Diestro Electrolyte Reagent",
-    image:
-      "/images/products/biosystem.webp",
-    description:
-      "Advanced electrolyte solution for Biosystem analyzers.",
-  },
-];
+import GetQuoteForm from "@/components/GetQuoteForm";
+import { db } from "@/lib/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export async function generateMetadata({
   params,
 }) {
-
   const { district, slug } =
     await params;
+
+  const snap = await getDoc(
+    doc(
+      db,
+      "websites",
+      "qlyte",
+      "pages",
+      "products"
+    )
+  );
+
+  const products =
+    snap.exists()
+      ? snap.data().products || []
+      : [];
 
   const product = products.find(
     (item) =>
@@ -80,16 +41,14 @@ export async function generateMetadata({
     district.slice(1);
 
   return {
-    title:
-      `${product.name} in ${districtName} | Global Biomedical`,
+    title: `${product.title} in ${districtName} | Global Biomedical`,
 
-    description:
-      `Buy ${product.name} in ${districtName}. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
+    description: `Buy ${product.title} in ${districtName}. Trusted supplier for hospitals, pathology labs and diagnostic centers.`,
 
     keywords: [
-      `${product.name} in ${districtName}`,
+      `${product.title} in ${districtName}`,
       `electrolyte reagent in ${districtName}`,
-      `buy ${product.name}`,
+      `buy ${product.title}`,
       `${districtName} pathology reagent`,
     ],
   };
@@ -98,9 +57,23 @@ export async function generateMetadata({
 export default async function ProductPage({
   params,
 }) {
-
   const { district, slug } =
     await params;
+
+  const snap = await getDoc(
+    doc(
+      db,
+      "websites",
+      "qlyte",
+      "pages",
+      "products"
+    )
+  );
+
+  const products =
+    snap.exists()
+      ? snap.data().products || []
+      : [];
 
   const product = products.find(
     (item) =>
@@ -118,14 +91,11 @@ export default async function ProductPage({
   return (
     <section
       style={{
-        padding:
-          "80px 0",
-        background:
-          "#f8fbff",
+        padding: "80px 0",
+        background: "#f8fbff",
       }}
     >
       <div className="container-custom">
-
         <div
           style={{
             display: "grid",
@@ -136,19 +106,16 @@ export default async function ProductPage({
               "center",
           }}
         >
-
           <div>
             <img
               src={
-                product.image
+                product.image ||
+                "/images/products/default.webp"
               }
-              alt={
-                product.name
-              }
+              alt={product.title}
               style={{
                 width: "100%",
-                borderRadius:
-                  "30px",
+                borderRadius: "30px",
                 boxShadow:
                   "0 20px 60px rgba(0,0,0,.12)",
               }}
@@ -156,7 +123,6 @@ export default async function ProductPage({
           </div>
 
           <div>
-
             <span
               style={{
                 background:
@@ -171,10 +137,7 @@ export default async function ProductPage({
                   "600",
               }}
             >
-              Available in{" "}
-              {
-                districtName
-              }
+              Available in {districtName}
             </span>
 
             <h1
@@ -189,9 +152,7 @@ export default async function ProductPage({
                   "700",
               }}
             >
-              {
-                product.name
-              }
+              {product.title}
             </h1>
 
             <p
@@ -206,77 +167,45 @@ export default async function ProductPage({
                   "18px",
               }}
             >
-              {
-                product.description
-              }
-
+              {product.desc}
               {" "}
               Available in{" "}
               <strong>
-                {
-                  districtName
-                }
+                {districtName}
               </strong>
-              . Trusted by
-              hospitals,
-              pathology
-              labs and
-              healthcare
-              centers.
+              . Trusted by hospitals,
+              pathology labs and
+              healthcare centers.
             </p>
 
             <div
               style={{
-                display:
-                  "flex",
+                display: "flex",
                 gap: "15px",
-                marginTop:
-                  "30px",
+                marginTop: "30px",
+                alignItems: "flex-start",
               }}
             >
-              <button
-                style={{
-                  background:
-                    "#1565d8",
-                  color:
-                    "#fff",
-                  border:
-                    "none",
-                  padding:
-                    "18px 34px",
-                  borderRadius:
-                    "999px",
-                  cursor:
-                    "pointer",
-                  fontWeight:
-                    "600",
-                }}
-              >
-                Get Quote
-              </button>
+              <GetQuoteForm />
 
               <Link
-                href="/contact"
+                href={`/${district}/contact`}
                 style={{
-                  border:
-                    "2px solid #1565d8",
-                  color:
-                    "#1565d8",
-                  padding:
-                    "16px 34px",
-                  borderRadius:
-                    "999px",
-                  fontWeight:
-                    "600",
+                  border: "2px solid #1565d8",
+                  color: "#1565d8",
+                  padding: "16px 34px",
+                  borderRadius: "999px",
+                  fontWeight: "600",
+                  textDecoration: "none",
+                  display: "inline-block",
+                  alignSelf: "flex-start",
                 }}
               >
                 Contact Us
               </Link>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -1,10 +1,13 @@
 import "./homr.css";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import Link from "next/link";
 export const metadata = {
   title:
-    "Electrolyte Reagent Supplier in India | Roche, ERBA, Medica EasyLyte",
+    "Electrolyte Reagent Supplier in {location} | Roche, ERBA, Medica EasyLyte",
 
   description:
-    "Trusted supplier of electrolyte analyzer reagents in India including Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Sensacore ST200 Aqua and more.",
+    "Trusted supplier of electrolyte analyzer reagents in {location} including Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Sensacore ST200 Aqua and more.",
 
   keywords: [
     "electrolyte reagent",
@@ -31,7 +34,7 @@ export const metadata = {
 
   openGraph: {
     title:
-      "Electrolyte Reagent Supplier in India",
+      "Electrolyte Reagent Supplier in {location}",
     description:
       "Premium electrolyte analyzer reagents and solutions for laboratories and hospitals.",
     url:
@@ -47,34 +50,71 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home({
+  districtData,
+}) {
+  const docRef = doc(
+    db,
+    "websites",
+    "qlyte",
+    "pages",
+    "home"
+  );
+  const snap = await getDoc(docRef);
+
+  const savedData = snap.exists()
+    ? snap.data()
+    : {};
+  const location =
+    districtData?.district || "India";
+
   return (
     <>
       {/* HERO SECTION */}
       <section className="hero-section">
         <div className="container-custom hero-grid">
+
           <div className="hero-content">
+
             <span className="hero-badge">
-              Trusted Electrolyte Supplier in India
+              Trusted Electrolyte Supplier in {location}
             </span>
 
-           <h1>
-            Premium <span>Electrolyte Analyzer Reagents</span>
-            <br />
-            For Hospitals & Laboratories
-          </h1>
+            <h1>
+              {savedData.title} in {location}
+            </h1>
 
             <p>
-               Central Biomedicals is a trusted supplier of premium electrolyte analyzer reagents in India, delivering high-quality and reliable solutions for hospitals, pathology laboratories, diagnostic centers and healthcare institutions. We provide compatible electrolyte reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, Biosystem Diestro, HDC Lyte, AB Lyte, Sensacore ST200 Aqua and other leading electrolyte analyzers with accurate and stable performance.
+              {savedData.description} in {location}
             </p>
 
             <div className="hero-buttons">
-              <button className="primary-btn">Explore Products</button>
 
-              <button className="secondary-btn">Get Free Quote</button>
+              <Link
+                href={
+                  districtData?.slug
+                    ? `/${districtData.slug}/products`
+                    : "/products"
+                }
+                className="primary-btn"
+              >
+                {savedData.button1Text}
+              </Link>
+              <Link
+                href={
+                  districtData?.slug
+                    ? `/${districtData.slug}/contact`
+                    : "/contact"
+                }
+                className="primary-btn"
+              >
+                {savedData.button2Text}
+              </Link>
+
             </div>
 
             <div className="stats-grid">
+
               <div>
                 <h3>10K+</h3>
                 <p>Reagents Delivered</p>
@@ -89,19 +129,25 @@ export default function Home() {
                 <h3>15+</h3>
                 <p>Years Experience</p>
               </div>
+
             </div>
+
           </div>
 
           <div className="hero-image">
             <img
-              src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e"
-              alt="Premium Laboratory Equipment Supplier in India"
+              src={
+                savedData.imageUrl ||
+                "https://images.unsplash.com/photo-1532187643603-ba119ca4109e"
+              }
+              alt={`Premium Laboratory Equipment Supplier in ${location}`}
             />
           </div>
+
         </div>
       </section>
 
-      {/* TRUST SECTION */} 
+      {/* TRUST SECTION */}
       <section className="trust-section">
         <div className="container-custom">
           <h2>Trusted By Hospitals, Pathology Labs & Diagnostic Centers</h2>
@@ -111,7 +157,7 @@ export default function Home() {
 
             <div className="trust-card">Reliable Test Accuracy</div>
 
-            <div className="trust-card">Fast PAN India Delivery</div>
+            <div className="trust-card">Fast PAN {location} Delivery</div>
 
             <div className="trust-card">Technical Expert Support</div>
           </div>
@@ -135,7 +181,7 @@ export default function Home() {
 
               <h3>Roche 9180 Electrolyte Reagent</h3>
               <p>
-               Premium quality electrolyte reagent compatible with Roche 9180 analyzers, designed for highly accurate sodium, potassium and chloride testing.
+                Premium quality electrolyte reagent compatible with Roche 9180 analyzers, designed for highly accurate sodium, potassium and chloride testing.
               </p>
             </div>
 
@@ -173,7 +219,7 @@ export default function Home() {
           <h2>Looking For Premium Electrolyte Reagents?</h2>
 
           <p>
-          Get high-quality electrolyte analyzer reagents with trusted quality, competitive pricing, technical support and fast PAN India delivery.
+            Get high-quality electrolyte analyzer reagents with trusted quality, competitive pricing, technical support and fast PAN {location} delivery.
           </p>
 
           <button className="primary-btn">Request Free Quote</button>
@@ -181,89 +227,89 @@ export default function Home() {
       </section>
 
 
-            {/* WHY CHOOSE US */}
-<section className="why-section">
-  <div className="container-custom why-grid">
+      {/* WHY CHOOSE US */}
+      <section className="why-section">
+        <div className="container-custom why-grid">
 
-    <div className="why-image">
-      <img
-        src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
-        alt="Laboratory Equipment"
-      />
-    </div>
+          <div className="why-image">
+            <img
+              src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
+              alt="Laboratory Equipment"
+            />
+          </div>
 
-    <div className="why-content">
-      <span>Why Choose Us</span>
+          <div className="why-content">
+            <span>Why Choose Us</span>
 
-      <h2>
-       Trusted Electrolyte Reagent Supplier
-For Hospitals & Laboratories
-      </h2>
+            <h2>
+              Trusted Electrolyte Reagent Supplier
+              For Hospitals & Laboratories
+            </h2>
 
-      <p>
-        Central Biomedicals provides high-quality electrolyte analyzer reagents that deliver stable performance, accurate test results and reliable compatibility with leading electrolyte analyzers. We focus on premium quality, fast delivery and customer satisfaction.
-      </p>
+            <p>
+              Central Biomedicals provides high-quality electrolyte analyzer reagents that deliver stable performance, accurate test results and reliable compatibility with leading electrolyte analyzers. We focus on premium quality, fast delivery and customer satisfaction.
+            </p>
 
-      <div className="why-features">
+            <div className="why-features">
 
-        <div className="feature-box">
-          ✅ Premium Quality Reagents
+              <div className="feature-box">
+                ✅ Premium Quality Reagents
+              </div>
+
+              <div className="feature-box">
+                🚚 Fast PAN {location} Delivery
+              </div>
+
+              <div className="feature-box">
+                🧪 Accurate Test Results
+              </div>
+
+              <div className="feature-box">
+                🎧 Dedicated Technical Support
+              </div>
+
+            </div>
+          </div>
+
         </div>
-
-        <div className="feature-box">
-          🚚 Fast PAN India Delivery
-        </div>
-
-        <div className="feature-box">
-          🧪 Accurate Test Results
-        </div>
-
-        <div className="feature-box">
-          🎧 Dedicated Technical Support
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
+      </section>
 
       {/* INDUSTRIES SECTION */}
-<section className="industry-section">
-  <div className="container-custom">
+      <section className="industry-section">
+        <div className="container-custom">
 
-    <div className="section-heading">
-      <span>Industries We Serve</span>
-      <h2>
-       Trusted Across Healthcare & Diagnostic Industries
-      </h2>
-    </div>
+          <div className="section-heading">
+            <span>Industries We Serve</span>
+            <h2>
+              Trusted Across Healthcare & Diagnostic Industries
+            </h2>
+          </div>
 
-    <div className="industry-grid">
+          <div className="industry-grid">
 
-      <div className="industry-card">
-       🏥 Hospitals & Clinics
-      </div>
+            <div className="industry-card">
+              🏥 Hospitals & Clinics
+            </div>
 
-      <div className="industry-card">
-       🧪 Pathology Laboratories
-      </div>
+            <div className="industry-card">
+              🧪 Pathology Laboratories
+            </div>
 
-      <div className="industry-card">
-       🔬 Diagnostic Centers
-      </div>
+            <div className="industry-card">
+              🔬 Diagnostic Centers
+            </div>
 
-      <div className="industry-card">
-     💊 Pharmaceutical Laboratories
-      </div>
+            <div className="industry-card">
+              💊 Pharmaceutical Laboratories
+            </div>
 
-      <div className="industry-card">
-     🎓 Research Institutions
-      </div>
+            <div className="industry-card">
+              🎓 Research Institutions
+            </div>
 
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
 
       {/* TESTIMONIAL SECTION */}
       <section className="testimonial-section">
@@ -278,7 +324,7 @@ For Hospitals & Laboratories
               <div className="stars">★★★★★</div>
 
               <p>
-              Excellent quality electrolyte reagents with fast delivery and consistent performance. Their support team is highly professional.
+                Excellent quality electrolyte reagents with fast delivery and consistent performance. Their support team is highly professional.
               </p>
 
               <div className="client-info">
@@ -298,7 +344,7 @@ For Hospitals & Laboratories
               <div className="stars">★★★★★</div>
 
               <p>
-               Reliable electrolyte solutions for our diagnostic laboratory. Product quality and test accuracy are excellent.
+                Reliable electrolyte solutions for our diagnostic laboratory. Product quality and test accuracy are excellent.
               </p>
 
               <div className="client-info">
@@ -318,7 +364,7 @@ For Hospitals & Laboratories
               <div className="stars">★★★★★</div>
 
               <p>
-         One of the best electrolyte reagent suppliers in India. Competitive pricing and outstanding service.
+                One of the best electrolyte reagent suppliers in {location}. Competitive pricing and outstanding service.
               </p>
 
               <div className="client-info">
@@ -340,53 +386,53 @@ For Hospitals & Laboratories
 
 
       {/* FAQ SECTION */}
-<section className="faq-section">
-  <div className="container-custom">
+      <section className="faq-section">
+        <div className="container-custom">
 
-    <div className="section-heading">
-      <span>Frequently Asked Questions</span>
+          <div className="section-heading">
+            <span>Frequently Asked Questions</span>
 
-      <h2>
-       Common Questions About
-Electrolyte Reagents
-      </h2>
-    </div>
+            <h2>
+              Common Questions About
+              Electrolyte Reagents
+            </h2>
+          </div>
 
-    <div className="faq-grid">
+          <div className="faq-grid">
 
-      <div className="faq-card">
-        <h3>
-          Do you provide compatible electrolyte analyzer reagents?
-        </h3>
+            <div className="faq-card">
+              <h3>
+                Do you provide compatible electrolyte analyzer reagents?
+              </h3>
 
-        <p>
-         Yes, we provide premium compatible electrolyte reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Biosystem Diestro, Sensacore ST200 Aqua and many more analyzers.
-        </p>
-      </div>
+              <p>
+                Yes, we provide premium compatible electrolyte reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, HDC Lyte, Biosystem Diestro, Sensacore ST200 Aqua and many more analyzers.
+              </p>
+            </div>
 
-      <div className="faq-card">
-        <h3>
-          Do you provide PAN India delivery?
-        </h3>
+            <div className="faq-card">
+              <h3>
+                Do you provide PAN {location} delivery?
+              </h3>
 
-        <p>
-       Yes, we provide secure and fast delivery of electrolyte reagents across India.
-        </p>
-      </div>
+              <p>
+                Yes, we provide secure and fast delivery of electrolyte reagents across {location}.
+              </p>
+            </div>
 
-      <div className="faq-card">
-        <h3>
-          Who can use your electrolyte reagents?
-        </h3>
+            <div className="faq-card">
+              <h3>
+                Who can use your electrolyte reagents?
+              </h3>
 
-        <p>
-        Our electrolyte analyzer reagents are widely used in hospitals, pathology labs, diagnostic centers, research laboratories and healthcare institutions.
-        </p>
-      </div>
+              <p>
+                Our electrolyte analyzer reagents are widely used in hospitals, pathology labs, diagnostic centers, research laboratories and healthcare institutions.
+              </p>
+            </div>
 
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
