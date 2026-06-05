@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 export default function Products({ districtData }) {
+  const location =
+    districtData?.district || "India";
   const [products, setProducts] = useState([]);
   const district = districtData?.slug;
-  const location = districtData?.district;
+  // const location = districtData?.district;
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -54,9 +56,8 @@ export default function Products({ districtData }) {
               <div className="product-card-page" key={item.id}>
                 <img
                   src={item.image}
-                  alt={`${item.title} Supplier in ${
-                    districtData?.district || "{location}"
-                  }`}
+                  alt={`${item.title} Supplier in ${districtData?.district || "{location}"
+                    }`}
                 />
 
                 <div className="card-content">
@@ -64,7 +65,11 @@ export default function Products({ districtData }) {
                   <h4>
                     Brand: <span>{item.brand}</span>
                   </h4>
-                  <p>{item.desc || item.short}</p>
+
+                  <h4>
+                    Instrument: <span>{item.instrument}</span>
+                  </h4>
+
                   {/* <Link href={`/products/${item.slug}`} className="more-btn"> */}
                   <Link
                     href={

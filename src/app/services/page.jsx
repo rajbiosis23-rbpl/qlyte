@@ -104,15 +104,11 @@ export default async function Services({
                 </div>
 
                 <h3>
-                  {item.title
-                    ?.replaceAll("{city}", districtName)
-                    ?.replaceAll("India", districtName)}
+                  {item.title}
                 </h3>
 
                 <p>
-                  {item.desc
-                    ?.replaceAll("{city}", districtName)
-                    ?.replaceAll("India", districtName)}
+                  {item.desc}
                 </p>
               </div>
             ))}

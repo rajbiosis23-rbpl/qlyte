@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { db } from "@/lib/firebase";
 import {
   collection,
@@ -23,7 +24,7 @@ export default async function sitemap() {
     const products =
       productSnap.exists()
         ? productSnap.data()
-            .products || []
+          .products || []
         : [];
 
     // Districts Fetch Dynamic

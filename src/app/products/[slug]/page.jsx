@@ -77,9 +77,9 @@ export async function generateMetadata({
           url:
             typeof product.image ===
               "string" &&
-            product.image.startsWith(
-              "http"
-            )
+              product.image.startsWith(
+                "http"
+              )
               ? product.image
               : "/images/products/default.webp",
           width: 1200,
@@ -98,7 +98,7 @@ export async function generateMetadata({
       images: [
         typeof product.image ===
           "string" &&
-        product.image.startsWith("http")
+          product.image.startsWith("http")
           ? product.image
           : "/images/products/default.webp",
       ],
@@ -142,139 +142,157 @@ export default async function ProductPage({
   }
 
   const schemaData = {
-  "@context":
-    "https://schema.org",
-  "@type": "Product",
-  name: product.title,
-  description: product.desc,
-  image: product.image,
-  brand: {
-    "@type": "Brand",
-    name: "Qlyte",
-  },
-  category:
-    "Electrolyte Analyzer Reagent",
-  offers: {
-    "@type": "Offer",
-    availability:
-      "https://schema.org/InStock",
-    priceCurrency: "INR",
-  },
-};
+    "@context":
+      "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.desc,
+    image: product.image,
+    brand: {
+      "@type": "Brand",
+      name: "Qlyte",
+    },
+    category:
+      "Electrolyte Analyzer Reagent",
+    offers: {
+      "@type": "Offer",
+      availability:
+        "https://schema.org/InStock",
+      priceCurrency: "INR",
+    },
+  };
 
   return (
-<section className="product-page">
+    <section className="product-page">
 
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify(
-        schemaData
-      ),
-    }}
-  />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            schemaData
+          ),
+        }}
+      />
 
-  <div className="container-custom">
+      <div className="container-custom">
 
-    <div className="product-grid">
+        <div className="product-grid">
 
-      {/* Image */}
-      <div className="product-image-box">
-        <img
-          src={
-            typeof product.image ===
-              "string" &&
-            product.image.startsWith(
-              "http"
-            )
-              ? product.image
-              : "/images/products/default.webp"
-          }
-          alt={product.title}
-        />
-      </div>
+          {/* Image */}
+          <div className="product-image-box">
+            <img
+              src={
+                typeof product.image ===
+                  "string" &&
+                  product.image.startsWith(
+                    "http"
+                  )
+                  ? product.image
+                  : "/images/products/default.webp"
+              }
+              alt={product.title}
+            />
+          </div>
 
-      {/* Content */}
-      <div className="product-content">
+          {/* Content */}
+          <div className="product-content">
 
-        <span className="product-tag">
-          Available in{" "}
-          {district || "India"}
-        </span>
+            <span className="product-tag">
+              Available in{" "}
+              {district || "India"}
+            </span>
 
-        <h1>
-          {product.title} electrolyte
-        </h1>
+            <h1>
+              {product.title} electrolyte
+            </h1>
 
-        <p>
-          {product.desc}. Trusted
-          supplier of{" "}
-          {product.title} for
-          hospitals, pathology labs
-          and healthcare centres in{" "}
-          {district || "India"}.
-        </p>
+            <p>
+              {product.desc}. Trusted
+              supplier of{" "}
+              {product.title} for
+              hospitals, pathology labs
+              and healthcare centres in{" "}
+              {district || "India"}.
+            </p>
 
-        <div className="product-features">
-          <span>
-            ✔ Premium Quality
-          </span>
+            <div className="product-features">
+              <span>
+                ✔ Premium Quality
+              </span>
 
-          <span>
-            ✔ Fast Delivery
-          </span>
+              <span>
+                ✔ Fast Delivery
+              </span>
 
-          <span>
-            ✔ Technical Support
-          </span>
+              <span>
+                ✔ Technical Support
+              </span>
 
-          <span>
-            ✔ Accurate Results
-          </span>
+              <span>
+                ✔ Accurate Results
+              </span>
+            </div>
+            <div className="product-details">
+              {product.title && (
+                <p>
+                  <strong>Product:</strong> {product.title}
+                </p>
+              )}
+
+              {product.brand && (
+                <p>
+                  <strong>Brand:</strong> {product.brand}
+                </p>
+              )}
+
+              {product.instrument && (
+                <p>
+                  <strong>Instrument:</strong> {product.instrument}
+                </p>
+              )}
+            </div>
+            <div className="product-btns">
+
+              <GetQuoteForm />
+
+              <Link
+                href={
+                  district
+                    ? `/${district}/contact`
+                    : "/contact"
+                }
+                className="secondary-btn"
+              >
+                Contact Us
+              </Link>
+
+            </div>
+          </div>
         </div>
 
-        <div className="product-btns">
+        {/* Info Section */}
+        <div className="info-box">
 
-          <GetQuoteForm />
+          <h2>
+            Electrolyte Reagent Supplier
+            in {district || "India"}
+          </h2>
 
-          <Link
-            href={
-              district
-                ? `/${district}/contact`
-                : "/contact"
-            }
-            className="secondary-btn"
-          >
-            Contact Us
-          </Link>
+          <p>
+            We provide premium quality{" "}
+            {product.title} electrolyte
+            reagent for hospitals,
+            pathology laboratories and
+            diagnostic centres in{" "}
+            {district || "India"}.
+            Trusted quality, stable
+            performance, competitive
+            pricing and fast delivery.
+          </p>
 
         </div>
+
       </div>
-    </div>
-
-    {/* Info Section */}
-    <div className="info-box">
-
-      <h2>
-        Electrolyte Reagent Supplier
-        in {district || "India"}
-      </h2>
-
-      <p>
-        We provide premium quality{" "}
-        {product.title} electrolyte
-        reagent for hospitals,
-        pathology laboratories and
-        diagnostic centres in{" "}
-        {district || "India"}.
-        Trusted quality, stable
-        performance, competitive
-        pricing and fast delivery.
-      </p>
-
-    </div>
-
-  </div>
-</section>
+    </section>
   );
 }

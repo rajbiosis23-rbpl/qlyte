@@ -2,7 +2,7 @@ import "./homr.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Link from "next/link";
-import Homeimg from "./public/Qas.png";
+// import Homeimg from "./public/Qas.png";
 
 
 
@@ -222,16 +222,25 @@ export default async function Home({ districtData }) {
 
           <p>
             Get high-quality electrolyte analyzer reagents with trusted quality,
-            competitive pricing, technical support and fast PAN {location}{" "}
+            competitive pricing, technical support and fast PAN {location}
             delivery.
           </p>
 
-          <button className="primary-btn">Request Free Quote</button>
+          <Link
+            href={
+              districtData?.slug
+                ? `/${districtData.slug}/about`
+                : "/about"
+            }
+            className="primary-btn"
+          >
+            About Us
+          </Link>
         </div>
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="why-section">
+      < section className="why-section" >
         <div className="container-custom why-grid">
           <div className="why-image">
             <img
@@ -265,10 +274,10 @@ export default async function Home({ districtData }) {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* INDUSTRIES SECTION */}
-      <section className="industry-section">
+      < section className="industry-section" >
         <div className="container-custom">
           <div className="section-heading">
             <span>Industries We Serve</span>
@@ -287,10 +296,10 @@ export default async function Home({ districtData }) {
             <div className="industry-card">🎓 Research Institutions</div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* TESTIMONIAL SECTION */}
-      <section className="testimonial-section">
+      < section className="testimonial-section" >
         <div className="container-custom">
           <div className="section-heading">
             <span>What Our Clients Say</span>
@@ -363,10 +372,10 @@ export default async function Home({ districtData }) {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* FAQ SECTION */}
-      <section className="faq-section">
+      < section className="faq-section" >
         <div className="container-custom">
           <div className="section-heading">
             <span>Frequently Asked Questions</span>
@@ -405,7 +414,7 @@ export default async function Home({ districtData }) {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       <section
         style={{

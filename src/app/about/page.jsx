@@ -175,7 +175,7 @@ export default function AboutPage({
 
             <div className="why-card">✅ Reliable Test Accuracy</div>
 
-            <div className="why-card">🚚 Fast PAN {location} Delivery</div>
+            <div className="why-card">🚚 Fast PAN India Delivery</div>
 
             <div className="why-card">🎧 Technical Support</div>
 
@@ -191,7 +191,7 @@ export default function AboutPage({
         <div className="container-custom">
           <div className="section-heading">
             <span>Our Journey</span>
-            <h2>Electrolyte Solutions We Specialize In</h2>
+            <h2>Electrolyte Solutions We Specialize In {location}</h2>
           </div>
 
           <div className="timeline">
