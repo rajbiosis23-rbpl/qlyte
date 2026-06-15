@@ -45,9 +45,8 @@ body {
 }
 
 .why-image img {
-  width: 100%;
-  height: 550px;
-  object-fit: cover;
+ 
+  height: 450px;
   border-radius: 35px;
 }
 
@@ -233,8 +232,9 @@ STATS
 
 .stats-grid {
   display: flex;
-  gap: 55px;
-  margin-top: 50px;
+  gap: 430px;
+  margin-top: 10px;
+  margin-left:90px;
 }
 
 .stats-grid h3 {
@@ -257,12 +257,11 @@ HERO IMAGE
 }
 
 .hero-image img {
-  width: 100%;
   height: 650px;
-  object-fit: cover;
   border-radius: 40px;
   box-shadow: 0 30px 70px rgba(0, 0, 0, .08);
   animation: floatImage 4s ease-in-out infinite;
+  margin-top: -257px;
 }
 
 @keyframes floatImage {
@@ -448,9 +447,10 @@ PRODUCTS
 }
 
 .product-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+  width: 340px;
+  height: 301px;
+margin-top: 20px;
+
 }
 
 .product-card h3 {

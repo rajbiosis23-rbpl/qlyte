@@ -2,9 +2,13 @@ import "./homr.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Link from "next/link";
-// import Homeimg from "./public/Qas.png";
+import Homeimg from "./img/Homeimg.png";
+import picone from "./img/tg.png";
+import pictwo from "./img/we.png";
+import picthree from "./img/d.png";
+import Qlyte from "./img/qlyte.png";
 
-
+import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const district = params?.district;
@@ -116,7 +120,24 @@ export default async function Home({ districtData }) {
             </div>
 
             <div className="stats-grid">
-              <div>
+            
+            </div>
+          </div>
+
+          <div className="hero-image">
+            <img
+              // src={
+              //   savedData.imageUrl ||
+              //   "https://images.unsplash.com/photo-1532187643603-ba119ca4109e"
+              // }
+               src={Qlyte.src}
+              alt={`Premium Laboratory Equipment Supplier in ${location}`}
+            />
+          </div>
+        </div>
+
+        <div className="stats-grid"> 
+  <div>
                 <h3>10K+</h3>
                 <p>Reagents Delivered</p>
               </div>
@@ -130,18 +151,7 @@ export default async function Home({ districtData }) {
                 <h3>15+</h3>
                 <p>Years Experience</p>
               </div>
-            </div>
-          </div>
 
-          <div className="hero-image">
-            <img
-              src={
-                savedData.imageUrl ||
-                "https://images.unsplash.com/photo-1532187643603-ba119ca4109e"
-              }
-              alt={`Premium Laboratory Equipment Supplier in ${location}`}
-            />
-          </div>
         </div>
       </section>
 
@@ -173,10 +183,10 @@ export default async function Home({ districtData }) {
           <div className="products-grid">
             <div className="product-card">
               <img
-                src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=1200"
-                alt="Scientific Microscope Laboratory Equipment"
+                src={picone.src}
+                alt="Roche 9180 Electrolyte Reagent"
+            
               />
-
               <h3>Roche 9180 Electrolyte Reagent</h3>
               <p>
                 Premium quality electrolyte reagent compatible with Roche 9180
@@ -187,8 +197,9 @@ export default async function Home({ districtData }) {
 
             <div className="product-card">
               <img
-                src="https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=1200"
-                alt="Roche 9180 Electrolyte Reagent"
+                src={pictwo.src}
+                alt="ERBA EC 90 Electrolyte Reagen"
+            
               />
 
               <h3>ERBA EC 90 Electrolyte Reagent</h3>
@@ -200,8 +211,9 @@ export default async function Home({ districtData }) {
 
             <div className="product-card">
               <img
-                src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1200"
-                alt="Medical Diagnostic Laboratory Equipment"
+               src={picthree.src}
+                alt="Medica EasyLyte Reagent"
+           
               />
 
               <h3>Medica EasyLyte Reagent</h3>
@@ -244,8 +256,9 @@ export default async function Home({ districtData }) {
         <div className="container-custom why-grid">
           <div className="why-image">
             <img
-              src="Homeimg"
+               src={Homeimg.src}
               alt="Laboratory Equipment"
+
             />
           </div>
 
