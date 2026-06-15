@@ -1,6 +1,7 @@
 import "./about.css";
 
 import Link from "next/link";
+import Aboutmain from "../img/ws.png";
 
 export const metadata = {
   title:
@@ -85,7 +86,7 @@ export default function AboutPage({
         <div className="container-custom company-grid">
           <div className="company-image">
             <img
-              src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
+               src={Aboutmain.src}
               alt="Trusted Electrolyte Reagent Supplier in {location}"
             />
           </div>
