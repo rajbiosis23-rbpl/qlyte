@@ -120,7 +120,7 @@ export default async function Home({ districtData }) {
             </div>
 
             <div className="stats-grid">
-            
+
             </div>
           </div>
 
@@ -130,27 +130,27 @@ export default async function Home({ districtData }) {
               //   savedData.imageUrl ||
               //   "https://images.unsplash.com/photo-1532187643603-ba119ca4109e"
               // }
-               src={Qlyte.src}
+              src={Qlyte.src}
               alt={`Premium Laboratory Equipment Supplier in ${location}`}
             />
           </div>
         </div>
 
-        <div className="stats-grid"> 
-  <div>
-                <h3>10K+</h3>
-                <p>Reagents Delivered</p>
-              </div>
+        <div className="stats-grid">
+          <div>
+            <h3>10K+</h3>
+            <p>Reagents Delivered</p>
+          </div>
 
-              <div>
-                <h3>50K</h3>
-                <p>Our Clients Family</p>
-              </div>
+          <div>
+            <h3>50K</h3>
+            <p>Our Clients Family</p>
+          </div>
 
-              <div>
-                <h3>15+</h3>
-                <p>Years Experience</p>
-              </div>
+          <div>
+            <h3>15+</h3>
+            <p>Years Experience</p>
+          </div>
 
         </div>
       </section>
@@ -185,7 +185,7 @@ export default async function Home({ districtData }) {
               <img
                 src={picone.src}
                 alt="Roche 9180 Electrolyte Reagent"
-            
+
               />
               <h3>Roche 9180 Electrolyte Reagent</h3>
               <p>
@@ -199,7 +199,7 @@ export default async function Home({ districtData }) {
               <img
                 src={pictwo.src}
                 alt="ERBA EC 90 Electrolyte Reagen"
-            
+
               />
 
               <h3>ERBA EC 90 Electrolyte Reagent</h3>
@@ -211,9 +211,9 @@ export default async function Home({ districtData }) {
 
             <div className="product-card">
               <img
-               src={picthree.src}
+                src={picthree.src}
                 alt="Medica EasyLyte Reagent"
-           
+
               />
 
               <h3>Medica EasyLyte Reagent</h3>
@@ -256,7 +256,7 @@ export default async function Home({ districtData }) {
         <div className="container-custom why-grid">
           <div className="why-image">
             <img
-               src={Homeimg.src}
+              src={Homeimg.src}
               alt="Laboratory Equipment"
 
             />
