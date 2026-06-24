@@ -203,7 +203,7 @@ export default async function ProductPage({
             </span>
 
             <h1>
-              {product.title} electrolyte
+              {product.title} Electrolyte Reagent in {district || "India"}
             </h1>
 
             <p>

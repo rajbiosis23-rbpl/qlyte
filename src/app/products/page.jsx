@@ -56,8 +56,7 @@ export default function Products({ districtData }) {
               <div className="product-card-page" key={item.id}>
                 <img
                   src={item.image}
-                  alt={`${item.title} Supplier in ${districtData?.district || "{location}"
-                    }`}
+                  alt={`${item.title} Supplier in ${location}`}
                 />
 
                 <div className="card-content">

@@ -2,7 +2,7 @@ import "./services.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 export const metadata = {
-  title: "Electrolyte Reagent Supplier Services in India | Central Biomedicals",
+  title: "Electrolyte Reagent Supplier Services in India | Qlyte",
 
   description:
     "Premium electrolyte reagent supply services in India for Roche 9180, ERBA EC 90, Medica EasyLyte, Sensacore, HDC Lyte and other electrolyte analyzers for hospitals and laboratories.",
@@ -23,7 +23,7 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: "https://centralbiomedicals.com/services",
+    canonical: "https://qlyte.com/services",
   },
 
   openGraph: {
@@ -32,8 +32,8 @@ export const metadata = {
     description:
       "Trusted supplier of premium electrolyte analyzer reagents for hospitals, pathology laboratories and diagnostic centers across India.",
 
-    url: "https://centralbiomedicals.com/services",
-    siteName: "Central Biomedicals",
+    url: "https://qlyte.com/services",
+    siteName: "Qlyte",
     type: "website",
   },
 
@@ -160,7 +160,7 @@ export default async function Services({
           <div className="why-service-image">
             <img
               src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1200"
-              alt="Premium Electrolyte Reagent Supplier In {districtName}"
+              alt={`Premium Electrolyte Reagent Supplier In ${districtName}`}
             />
           </div>
 

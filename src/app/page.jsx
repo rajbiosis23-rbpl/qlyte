@@ -1,4 +1,4 @@
-import "./homr.css";
+import "./home.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Link from "next/link";
@@ -119,9 +119,6 @@ export default async function Home({ districtData }) {
               </Link>
             </div>
 
-            <div className="stats-grid">
-
-            </div>
           </div>
 
           <div className="hero-image">

@@ -4,8 +4,7 @@ import Link from "next/link";
 import Aboutmain from "../img/ws.png";
 
 export const metadata = {
-  title:
-    "About Central Biomedicals | Trusted Electrolyte Reagent Supplier in {location}",
+  title: "About Central Biomedicals | Trusted Electrolyte Reagent Supplier",
 
   description:
     "Learn about Central Biomedicals, a trusted electrolyte reagent supplier in {location} offering premium electrolyte analyzer reagents for Roche 9180, ERBA EC 90, Medica EasyLyte, Sensacore, HDC Lyte and more.",
@@ -28,7 +27,7 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: "https://centralbiomedicals.com/about",
+    canonical: "https://qlyte.com/about",
   },
 
   openGraph: {
@@ -37,7 +36,7 @@ export const metadata = {
     description:
       "Trusted supplier of electrolyte analyzer reagents for hospitals, pathology labs and diagnostic centers across India.",
 
-    url: "https://centralbiomedicals.com/about",
+    url: "https://qlyte.com/about",
     siteName: "Central Biomedicals",
     type: "website",
   },
@@ -86,7 +85,7 @@ export default function AboutPage({
         <div className="container-custom company-grid">
           <div className="company-image">
             <img
-               src={Aboutmain.src}
+              src={Aboutmain.src}
               alt="Trusted Electrolyte Reagent Supplier in {location}"
             />
           </div>

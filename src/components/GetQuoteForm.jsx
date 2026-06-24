@@ -12,6 +12,18 @@ export default function GetQuoteForm() {
 
         const formData = new FormData(e.target);
 
+        const email = formData.get("email")?.trim();
+        const phone = formData.get("phone")?.trim();
+
+        const phoneRegex = /^[6-9]\d{9}$/;
+
+        if (!phoneRegex.test(phone)) {
+            toast.error(
+                "Please enter a valid 10-digit mobile number"
+            );
+            return;
+        }
+
         try {
             await addDoc(
                 collection(
@@ -21,9 +33,9 @@ export default function GetQuoteForm() {
                     "productQueries"
                 ),
                 {
-                    email: formData.get("email"),
-                    phone: formData.get("phone"),
-                    productName: "Get Quote", // ya dynamic product name
+                    email,
+                    phone,
+                    productName: "Get Quote",
                     createdAt: serverTimestamp(),
                 }
             );
@@ -32,6 +44,7 @@ export default function GetQuoteForm() {
 
             e.target.reset();
             setShowForm(false);
+
         } catch (error) {
             console.error(error);
             toast.error("Failed to submit query");
@@ -98,8 +111,11 @@ export default function GetQuoteForm() {
 
                             <input
                                 type="tel"
+                                inputMode="numeric"
+                                maxLength={10}
+                                pattern="[6-9]{1}[0-9]{9}"
                                 name="phone"
-                                placeholder="Contact Number"
+                                placeholder="Enter 10 Digit Mobile Number"
                                 required
                                 style={{
                                     width: "100%",
